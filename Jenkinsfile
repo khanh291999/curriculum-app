@@ -26,9 +26,23 @@ pipeline {
 
     stage('Build image') {
       steps {
-        sh 'docker build -f curriculum-front/Dockerfile . -t quockhanh0209/curriculum-front'
+        sh 'sudo docker build -f curriculum-front/Dockerfile . -t quockhanh0209/curriculum-front'
       }
     }
 
+    stage('Log into Dockerhub') {
+      environment {
+        DOCKERHUB_USER = ''
+        DOCKERHUB_PASSWORD = ''
+      }
+      steps {
+        sh 'docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD'
+      }
+    }
+
+  }
+  environment {
+    DOCKERHUB_USER = 'a'
+    DOCKERHUB_PASSWORD = 'a'
   }
 }
