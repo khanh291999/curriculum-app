@@ -24,5 +24,11 @@ pipeline {
       }
     }
 
+    stage('Build image') {
+      steps {
+        sh 'docker build -f curriculum-front/Dockerfile . -t quockhanh0209/curriculum-front'
+      }
+    }
+
   }
 }
