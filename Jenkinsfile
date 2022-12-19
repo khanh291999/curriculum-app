@@ -40,6 +40,12 @@ pipeline {
       }
     }
 
+    stage('Push to dockerhub') {
+      steps {
+        sh 'docker push quockhanh0209/curriculum-front:latest'
+      }
+    }
+
   }
   environment {
     DOCKERHUB_USER = 'a'
