@@ -1,5 +1,8 @@
 pipeline {
   agent {label 'Dev_Node'}
+  environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+	}
   stages {
     stage('CHeckout Code') {
       steps {
@@ -31,13 +34,9 @@ pipeline {
     }
 
     stage('Log into Dockerhub') {
-      environment {
-        DOCKERHUB_USER = ''
-        DOCKERHUB_PASSWORD = ''
-      }
-      steps {
-        sh 'docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD'
-      }
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
     }
 
     stage('Push to dockerhub') {
