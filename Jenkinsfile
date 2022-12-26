@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent {label 'Dev_Node'}
   stages {
     stage('CHeckout Code') {
       steps {
