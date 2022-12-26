@@ -26,7 +26,7 @@ pipeline {
 
     stage('Build image') {
       steps {
-        sh 'sudo docker build -f curriculum-front/Dockerfile . -t quockhanh0209/curriculum-front'
+        sh 'docker build -f curriculum-front/Dockerfile . -t quockhanh0209/curriculum-front'
       }
     }
 
