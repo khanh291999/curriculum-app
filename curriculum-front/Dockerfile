@@ -5,6 +5,7 @@ RUN ls -l
 RUN npm install
 COPY curriculum-front ./
 RUN ls -l
+RUN npx update-browserslist-db@latest
 RUN npm run build
 COPY curriculum-front/nodeServer.js dist/nodeServer.js
 WORKDIR /usr/src/app/dist
